@@ -315,7 +315,7 @@ const statsObserver = new IntersectionObserver(function(entries) {
         if (entry.isIntersecting) {
             const statNumbers = entry.target.querySelectorAll('.stat h4');
             statNumbers.forEach((stat, index) => {
-                const targets = [3, 10, 5]; // 실제 숫자에 맞게 조정
+                const targets = [4, 3, 15]; // 4년 경력, 3개 회사, 15+ 프로젝트
                 animateCounter(stat, targets[index], 2000);
             });
             statsObserver.unobserve(entry.target);

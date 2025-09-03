@@ -99,24 +99,50 @@ document.querySelectorAll('.skill-item').forEach(item => {
     });
 });
 
-// 프로젝트 카드 3D 효과
+// 프로젝트 카드 호버 효과
 document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+        this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+        this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+        // 카드 내부 요소들에 미묘한 애니메이션 추가
+        const title = this.querySelector('.project-title');
+        const description = this.querySelector('.project-description');
+        const techStack = this.querySelector('.project-tech');
         
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        if (title) {
+            title.style.transform = 'translateY(-2px)';
+            title.style.transition = 'transform 0.3s ease';
+        }
+        if (description) {
+            description.style.transform = 'translateY(-1px)';
+            description.style.transition = 'transform 0.3s ease';
+        }
+        if (techStack) {
+            techStack.style.transform = 'translateY(-1px)';
+            techStack.style.transition = 'transform 0.3s ease';
+        }
     });
     
     card.addEventListener('mouseleave', function() {
-        this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+        
+        // 카드 내부 요소들 원래 위치로 복원
+        const title = this.querySelector('.project-title');
+        const description = this.querySelector('.project-description');
+        const techStack = this.querySelector('.project-tech');
+        
+        if (title) {
+            title.style.transform = 'translateY(0)';
+        }
+        if (description) {
+            description.style.transform = 'translateY(0)';
+        }
+        if (techStack) {
+            techStack.style.transform = 'translateY(0)';
+        }
     });
 });
 
@@ -292,17 +318,17 @@ function createDarkModeToggle() {
 createDarkModeToggle();
 
 // 숫자 카운터 애니메이션
-function animateCounter(element, target, duration = 2000) {
+function animateCounter(element, target, duration = 2000, addPlus = false) {
     let start = 0;
     const increment = target / (duration / 16);
     
     function updateCounter() {
         start += increment;
         if (start < target) {
-            element.textContent = Math.floor(start) + '+';
+            element.textContent = Math.floor(start) + (addPlus ? '+' : '');
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target + '+';
+            element.textContent = target + (addPlus ? '+' : '');
         }
     }
     
@@ -314,9 +340,11 @@ const statsObserver = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const statNumbers = entry.target.querySelectorAll('.stat h4');
+            const targets = [4, 3, 15]; // 4년 경력, 3개 회사, 15+ 프로젝트
+            const addPlus = [false, false, true]; // 프로젝트에만 + 붙이기
+            
             statNumbers.forEach((stat, index) => {
-                const targets = [4, 3, 15]; // 4년 경력, 3개 회사, 15+ 프로젝트
-                animateCounter(stat, targets[index], 2000);
+                animateCounter(stat, targets[index], 2000, addPlus[index]);
             });
             statsObserver.unobserve(entry.target);
         }

@@ -120,33 +120,84 @@ document.querySelectorAll('.project-card').forEach(card => {
     });
 });
 
-// 폼 제출 처리
-document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // 폼 데이터 수집
-    const formData = new FormData(this);
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const subject = this.querySelector('input[type="text"]:nth-of-type(2)').value;
-    const message = this.querySelector('textarea').value;
-    
-    // 간단한 유효성 검사
-    if (!name || !email || !subject || !message) {
-        alert('모든 필드를 입력해주세요.');
-        return;
+// EmailJS 설정 (사용자가 나중에 설정해야 함)
+const EMAILJS_CONFIG = {
+    PUBLIC_KEY: 'YOUR_PUBLIC_KEY',      // EmailJS 대시보드에서 복사
+    SERVICE_ID: 'YOUR_SERVICE_ID',      // 이메일 서비스 ID
+    TEMPLATE_ID: 'YOUR_TEMPLATE_ID'     // 이메일 템플릿 ID
+};
+
+// EmailJS 초기화
+(function() {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
     }
+})();
+
+// 폼 제출 처리 (EmailJS 사용)
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
     
-    // 이메일 형식 검사
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('올바른 이메일 주소를 입력해주세요.');
-        return;
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // 폼 데이터 수집
+            const name = this.querySelector('input[name="user_name"]').value;
+            const email = this.querySelector('input[name="user_email"]').value;
+            const subject = this.querySelector('input[name="subject"]').value;
+            const message = this.querySelector('textarea[name="message"]').value;
+            
+            // 간단한 유효성 검사
+            if (!name || !email || !subject || !message) {
+                alert('모든 필드를 입력해주세요.');
+                return;
+            }
+            
+            // 이메일 형식 검사
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('올바른 이메일 주소를 입력해주세요.');
+                return;
+            }
+            
+            // EmailJS가 설정되지 않은 경우
+            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                alert('EmailJS가 아직 설정되지 않았습니다. 개발자에게 문의하세요.');
+                return;
+            }
+            
+            // 버튼 상태 변경
+            submitBtn.textContent = '전송 중...';
+            submitBtn.disabled = true;
+            
+            // EmailJS로 이메일 전송
+            emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, {
+                user_name: name,
+                user_email: email,
+                subject: subject,
+                message: message,
+                to_email: 'your.email@example.com' // 받을 이메일 주소
+            })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('메시지가 성공적으로 전송되었습니다!');
+                contactForm.reset();
+            })
+            .catch(function(error) {
+                console.log('FAILED...', error);
+                alert('메시지 전송에 실패했습니다. 다시 시도해주세요.');
+            })
+            .finally(function() {
+                // 버튼 상태 복원
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
     }
-    
-    // 성공 메시지 (실제로는 서버로 전송)
-    alert('메시지가 성공적으로 전송되었습니다!');
-    this.reset();
 });
 
 // 스크롤 진행 표시기

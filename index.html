@@ -16,7 +16,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>Portfolio</h2>
+                <h2>DevProfile</h2>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -32,6 +32,9 @@
                     <a href="#projects" class="nav-link">프로젝트</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#personal-projects" class="nav-link">개인작업</a>
+                </li>
+                <li class="nav-item">
                     <a href="#contact" class="nav-link">연락처</a>
                 </li>
             </ul>
@@ -45,24 +48,64 @@
 
     <!-- 메인 섹션 -->
     <section id="home" class="hero">
+        <div class="hero-particles" id="particles"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">윤예빈</h1>
-                <h2 class="hero-subtitle"><span class="highlight">백엔드 웹 개발자</span></h2>
+                <h1 class="hero-title">Backend<br>Developer</h1>
+                <h2 class="hero-subtitle">
+                    <span class="fade-text">윤예빈</span>
+                </h2>
                 <p class="hero-description">
-                    4년간의 실무 경험을 바탕으로 Spring Boot, node, vue, JavaScript를 활용한 
-                    웹 애플리케이션 개발을 전문으로 합니다. 사용자 중심의 서비스 설계와 
-                    효율적인 시스템 구축에 집중하고 있습니다.
+                    4년간의 실무 경험으로 결제 시스템부터 핀테크까지 다양한 도메인을 경험한 백엔드 개발자
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-                    <a href="#contact" class="btn btn-outline">연락하기</a>
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        <span>작업 보기</span>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>함께 일하기</span>
+                    </a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-card">
-                    <div class="profile-img">
-                        <i class="fas fa-user"></i>
+            <div class="hero-visual">
+                <div class="hero-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>4</h3>
+                            <p>년 경력</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>10+</h3>
+                            <p>완료 프로젝트</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>3</h3>
+                            <p>회사 경험</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Multiple</h3>
+                            <p>기술 스택</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,38 +118,67 @@
     <!-- 소개 섹션 -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <h3>윤예빈을 소개합니다</h3>
-                    <p>
-                        안녕하세요, 개발자 윤예빈입니다. 저는 2021년부터 현재까지 약 4년간의 실무 경험을 통해 
-                        모바일 상품권 플랫폼, 전자상거래 시스템, 핀테크 서비스 등 다양한 도메인에서 풀스택 개발을 담당해왔습니다.<br><br>
-                        
-                        특히 결제 시스템 연동, 데이터 마이그레이션, 배치 자동화, API 설계 등 복잡한 비즈니스 로직 구현에 강점을 보유하고 있으며, 
-                        Spring Boot, .NET Core, Node.js, vue.js, JavaScript 등 다양한 기술 스택을 활용한 프로젝트 경험이 풍부합니다.<br><br>
-                        
-                        현재는 새로운 도전과 성장의 기회를 찾고 있으며, 팀워크와 지속적인 학습을 통해 
-                        더욱 전문적인 개발자로 성장해나가고자 합니다.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h4></h4>
-                            <p>년 경력</p>
+                <div class="about-visual">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="profile-badge">
+                                <span>Backend Developer</span>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <h4></h4>
-                            <p>개 회사</p>
-                        </div>
-                        <div class="stat">
-                            <h4></h4>
-                            <p>완료 프로젝트</p>
+                        <div class="profile-info">
+                            <h4>윤예빈</h4>
+                            <p>백엔드 웹 개발자</p>
+                            <div class="profile-tags">
+                                <span class="tag">Spring Boot</span>
+                                <span class="tag">Java</span>
+                                <span class="tag">MySQL</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Linux</span>
+                                <span class="tag">Jenkins</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-code"></i>
+                    
+                    <div class="experience-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h5>2021-2023</h5>
+                                <p>모바일 상품권 플랫폼 개발</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h5>2023-2024</h5>
+                                <p>전자상거래 플랫폼 개발</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h5>2024-2025</h5>
+                                <p>부동산 PF 및 핀테크 서비스</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-text">
+                        <h3>About Me</h3>
+                        <p class="intro-text">
+                            안녕하세요, 개발자 윤예빈입니다. 저는 2021년부터 현재까지 약 4년간의 실무 경험을 통해 
+                            모바일 상품권 플랫폼, 전자상거래 시스템, 핀테크 서비스 등 다양한 도메인에서 백엔드 개발을 담당해왔습니다.<br><br>
+                            
+                            특히 결제 시스템 연동, 데이터 마이그레이션, 배치 자동화, API 설계 등 복잡한 비즈니스 로직 구현에 강점을 보유하고 있으며, 
+                            다양한 기술 스택을 활용한 프로젝트 경험이 풍부합니다.<br><br>
+                            
+                            현재는 새로운 도전과 성장의 기회를 찾고 있으며, 팀워크와 지속적인 학습을 통해 
+                            더욱 전문적인 개발자로 성장해나가고자 합니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -147,21 +219,21 @@
                             <span>Spring Boot</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-cube"></i>
-                            <span>.NET Core</span>
-                        </div>
-                        <div class="skill-item">
                             <i class="fab fa-node-js"></i>
                             <span>Node.js</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-server"></i>
-                            <span>Fastify</span>
+                            <i class="fas fa-database"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>REST API</span>
                         </div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Database & DevOps</h3>
+                    <h3>Database & CI/CD</h3>
                     <div class="skill-items">
                         <div class="skill-item">
                             <i class="fas fa-database"></i>
@@ -176,8 +248,33 @@
                             <span>Linux</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fab fa-apple"></i>
-                            <span>iOS</span>
+                            <i class="fas fa-cogs"></i>
+                            <span>Jenkins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Collaboration Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-jira"></i>
+                            <span>Jira</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-slack"></i>
+                            <span>Slack</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-gitlab"></i>
+                            <span>GitLab</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Notion</span>
                         </div>
                     </div>
                 </div>
@@ -189,17 +286,18 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">회사에서의 프로젝트 경험</p>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-credit-card"></i>
+                <div class="project-card" onclick="openProjectModal('couponpree')" style="cursor: pointer;">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="project-content">
                         <h3>모바일 상품권 플랫폼 개발</h3>
-                        <p>.NET Core와 Spring Boot를 활용하여 모바일 상품권 플랫폼을 개발하였습니다. CU 상품권 구매/발송, 결제 시스템 연동, Firebase 푸시 알림, 어드민 페이지 및 이체 서비스 구현 등을 담당했습니다.</p>
+                        <p>Spring Boot와 Java를 활용하여 모바일 상품권 플랫폼을 개발하였습니다. 상품권 구매/발송, 결제 시스템 연동, Firebase 푸시 알림, 어드민 페이지 및 이체 서비스 구현 등을 담당했습니다.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">.NET Core</span>
                             <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Java</span>
                             <span class="tech-tag">MSSQL</span>
                             <span class="tech-tag">iOS</span>
                             <span class="tech-tag">Firebase</span>
@@ -207,15 +305,15 @@
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-calendar-alt"></i>
-                                2021-2023
+                                2021.12-2023.03
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-line"></i>
+                <div class="project-card" onclick="openProjectModal('ecommerce')" style="cursor: pointer;">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
                     <div class="project-content">
                         <h3>전자상거래 플랫폼 개발</h3>
@@ -230,15 +328,15 @@
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-calendar-alt"></i>
-                                2023-2024
+                                2023.06-2024.02
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-building"></i>
+                <div class="project-card" onclick="openProjectModal('fintech')" style="cursor: pointer;">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="project-content">
                         <h3>부동산 PF 및 핀테크 서비스</h3>
@@ -253,7 +351,7 @@
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-calendar-alt"></i>
-                                2024.05-2024.06
+                                2024.05-2025.06
                             </a>
                         </div>
                     </div>
@@ -262,13 +360,77 @@
         </div>
     </section>
 
+    <!-- 개인 프로젝트 섹션 -->
+    <section id="personal-projects" class="personal-projects">
+        <div class="container">
+            <h2 class="section-title">Personal Projects</h2>
+            <p class="section-subtitle">개인 웹앱 프로젝트</p>
+            <div class="personal-projects-grid">
+                <div class="personal-project-card" onclick="openProjectModal('project1')">
+                    <div class="project-preview">
+                        <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <i class="fas fa-eye"></i>
+                            <span>미리보기</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>웹 애플리케이션</h3>
+                        <p>개인 프로젝트로 개발한 웹앱</p>
+                        <div class="project-status">
+                            <span class="status-badge coming-soon">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 모달 -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProjectModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">프로젝트 상세</h2>
+            </div>
+            <div class="modal-body">
+                <div class="project-demo">
+                    <iframe id="projectIframe" src="" frameborder="0"></iframe>
+                </div>
+                <div class="project-details">
+                    <h3>프로젝트 소개</h3>
+                    <p id="modalDescription">프로젝트 설명이 여기에 표시됩니다.</p>
+                    <div class="project-features">
+                        <h4>주요 기능</h4>
+                        <ul id="modalFeatures">
+                            <li>기능 1</li>
+                            <li>기능 2</li>
+                            <li>기능 3</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary" id="modalWebLink" target="_blank" style="display: none;">
+                            <i class="fas fa-external-link-alt"></i>
+                            자세히 보기
+                        </a>
+                        <a href="#" class="btn btn-secondary" id="modalAppLink" target="_blank" style="display: none;">
+                            <i class="fas fa-code"></i>
+                            기술 문서
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 연락처 섹션 -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Contact Me</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>연락처 정보</h3>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <span>velophino@gmail.com</span>
@@ -282,14 +444,11 @@
                         <span>서울, 대한민국</span>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link">
+                        <a href="https://github.com/velophin" class="social-link" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://www.notion.so/PRIVATE-8d84387819f74f58ba18a6ade25b6488" class="social-link" target="_blank">
+                            <i class="fas fa-file-alt"></i>
                         </a>
                     </div>
                 </div>
@@ -317,7 +476,7 @@
     <!-- 푸터 -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 나의 포트폴리오. All rights reserved.</p>
+            <p>&copy; 2025 Yun Yebin Portfolio</p>
         </div>
     </footer>
 
@@ -326,3 +485,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+

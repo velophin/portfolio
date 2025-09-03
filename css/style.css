@@ -624,6 +624,11 @@ section {
         display: flex;
     }
     
+    /* 모바일 상단 여백 추가 */
+    .hero {
+        padding-top: 100px;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -662,6 +667,11 @@ section {
     
     section {
         padding: 3rem 0;
+    }
+    
+    /* 작은 모바일 화면에서 더 많은 상단 여백 */
+    .hero {
+        padding-top: 120px;
     }
     
     .hero-title {

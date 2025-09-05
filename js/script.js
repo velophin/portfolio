@@ -99,10 +99,6 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// 모바일 환경 감지
-function isMobile() {
-    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
 
 // 페이지 로드 시 타이핑 효과 적용
 window.addEventListener('load', function() {
@@ -113,54 +109,10 @@ window.addEventListener('load', function() {
     }
 });
 
-// 스킬 아이템 호버 효과는 CSS로만 처리
 
-// 프로젝트 카드 호버 효과
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-        this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
-        this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        
-        // 카드 내부 요소들에 미묘한 애니메이션 추가
-        const title = this.querySelector('.project-title');
-        const description = this.querySelector('.project-description');
-        const techStack = this.querySelector('.project-tech');
-        
-        if (title) {
-            title.style.transform = 'translateY(-2px)';
-            title.style.transition = 'transform 0.3s ease';
-        }
-        if (description) {
-            description.style.transform = 'translateY(-1px)';
-            description.style.transition = 'transform 0.3s ease';
-        }
-        if (techStack) {
-            techStack.style.transform = 'translateY(-1px)';
-            techStack.style.transition = 'transform 0.3s ease';
-        }
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-        
-        // 카드 내부 요소들 원래 위치로 복원
-        const title = this.querySelector('.project-title');
-        const description = this.querySelector('.project-description');
-        const techStack = this.querySelector('.project-tech');
-        
-        if (title) {
-            title.style.transform = 'translateY(0)';
-        }
-        if (description) {
-            description.style.transform = 'translateY(0)';
-        }
-        if (techStack) {
-            techStack.style.transform = 'translateY(0)';
-        }
-    });
-});
+// 프로젝트 카드 호버 효과 (상세보기 오버레이만 표시)
+
+// 개인 프로젝트 카드 호버 효과 (상세보기 오버레이만 표시)
 
 // EmailJS 설정 (사용자가 나중에 설정해야 함)
 const EMAILJS_CONFIG = {
@@ -252,7 +204,7 @@ function createScrollProgress() {
         left: 0;
         width: 0%;
         height: 3px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2c2c2c 0%, #404040 100%);
         z-index: 9999;
         transition: width 0.3s ease;
     `;
@@ -375,563 +327,185 @@ createParticles();
 
 // 커스텀 데모 HTML 생성 함수
 function createCustomDemo(projectId) {
-    if (projectId === 'couponpree') {
+    if (projectId === 'project1') {
         return `
-            <div style="
-                width: 100%; 
-                height: 500px; 
-                background: #f8f9fa;
-                border-radius: 12px;
-                overflow-y: auto;
-                position: relative;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            ">
-                <!-- 상단 헤더 -->
-                <div style="
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    padding: 20px;
-                    color: white;
-                    text-align: center;
-                    border-radius: 12px 12px 0 0;
-                ">
-                    <div style="font-size: 24px; font-weight: bold; margin-bottom: 8px;">모바일 상품권 플랫폼</div>
-                    <div style="font-size: 14px; opacity: 0.9;">소상공인과 소비자를 연결하는 디지털 상품권 서비스</div>
+            <div class="coming-soon-demo">
+                <div class="coming-soon-content">
+                    <div class="coming-soon-icon">🔧</div>
+                    <h3>개발 중입니다</h3>
+                    <p>혁신적인 웹 애플리케이션을<br>열심히 개발하고 있습니다.</p>
+                    <div class="coming-soon-badge">COMING SOON</div>
+                </div>
+            </div>
+        `;
+    } else if (projectId === 'couponpree') {
+        return `
+            <div class="project-demo-content">
+                <div class="demo-section">
+                    <h3>서비스 개요</h3>
+                    <p>모바일 상품권 구매부터 사용까지 전 과정을 디지털화하여 편의성을 높이고, 가맹점에게는 안정적인 매출 확보와 마케팅 도구를 제공하는 플랫폼입니다.</p>
                 </div>
                 
-                <!-- 메인 컨텐츠 -->
-                <div style="padding: 25px;">
-                    <!-- 서비스 소개 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">🎯 서비스 개요</h3>
-                        <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">
-                            모바일 상품권 구매부터 사용까지 전 과정을 디지털화하여 편의성을 높이고, 
-                            가맹점에게는 안정적인 매출 확보와 마케팅 도구를 제공하는 플랫폼입니다.
-                        </p>
+                <div class="demo-section">
+                    <h3>주요 기능</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">모바일 상품권</div>
+                                <div class="feature-desc">할인 구매 및 발송</div>
                     </div>
-                    
-                    <!-- 주요 기능 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">⚡ 주요 기능</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="
-                                background: #f8f9ff;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #667eea;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">📱 모바일 상품권</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">할인 구매 및 발송</div>
                             </div>
-                            <div style="
-                                background: #fff8f0;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #ff9500;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">🎁 리워드 시스템</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">추가 적립 혜택</div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">리워드 시스템</div>
+                                <div class="feature-desc">추가 적립 혜택</div>
                             </div>
-                            <div style="
-                                background: #f0fff4;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #28a745;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">🏪 가맹점 관리</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">매출 확보 도구</div>
                             </div>
-                            <div style="
-                                background: #f0f8ff;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #007bff;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">📊 마케팅 분석</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">통계 및 분석</div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">가맹점 관리</div>
+                                <div class="feature-desc">매출 확보 도구</div>
                             </div>
                         </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">마케팅 분석</div>
+                                <div class="feature-desc">통계 및 분석</div>
+                    </div>
+                        </div>
+                    </div>
                     </div>
                     
-                    <!-- 기술 스택 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">🛠️ 개발 기술</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span style="
-                                background: linear-gradient(135deg, #667eea, #764ba2);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Spring Boot</span>
-                            <span style="
-                                background: linear-gradient(135deg, #f093fb, #f5576c);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Java</span>
-                            <span style="
-                                background: linear-gradient(135deg, #4facfe, #00f2fe);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">MSSQL</span>
-                            <span style="
-                                background: linear-gradient(135deg, #fa709a, #fee140);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">iOS</span>
-                            <span style="
-                                background: linear-gradient(135deg, #a8edea, #fed6e3);
-                                color: #333;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Firebase</span>
-                            <span style="
-                                background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">.NET</span>
-                            <span style="
-                                background: linear-gradient(135deg, #f7b731, #f39c12);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">JavaScript</span>
-                            <span style="
-                                background: linear-gradient(135deg, #2ecc71, #27ae60);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">jQuery</span>
-                        </div>
+                <div class="demo-section">
+                    <h3>개발 기술</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">MSSQL</span>
+                        <span class="tech-tag">iOS</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">jQuery</span>
                     </div>
                 </div>
             </div>
         `;
     } else if (projectId === 'ecommerce') {
         return `
-            <div style="
-                width: 100%; 
-                height: 500px; 
-                background: #f8f9fa;
-                border-radius: 12px;
-                overflow-y: auto;
-                position: relative;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            ">
-                <!-- 상단 헤더 -->
-                <div style="
-                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-                    padding: 20px;
-                    color: white;
-                    text-align: center;
-                    border-radius: 12px 12px 0 0;
-                ">
-                    <div style="font-size: 24px; font-weight: bold; margin-bottom: 8px;">전자상거래 플랫폼</div>
-                    <div style="font-size: 14px; opacity: 0.9;">네이버 커머스 연동 및 제휴 업체 관리 시스템</div>
+            <div class="project-demo-content">
+                <div class="demo-section">
+                    <h3>서비스 개요</h3>
+                    <p>네이버 스마트스토어 API를 활용한 전자상거래 플랫폼으로, 제휴 업체의 상품을 효율적으로 관리하고 자사 상품 관리 어드민 시스템을 개발하여 교보생명 회원과 연동된 통합적인 쇼핑 경험을 제공합니다.</p>
                 </div>
                 
-                <!-- 메인 컨텐츠 -->
-                <div style="padding: 25px;">
-                    <!-- 서비스 소개 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">🛒 서비스 개요</h3>
-                        <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">
-                            네이버 스마트스토어 API를 활용한 전자상거래 플랫폼으로, 제휴 업체의 상품을 효율적으로 관리하고 
-                            자사 상품 관리 어드민 시스템을 개발하여 교보생명 회원과 연동된 통합적인 쇼핑 경험을 제공합니다.
-                        </p>
+                <div class="demo-section">
+                    <h3>주요 기능</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">네이버 커머스</div>
+                                <div class="feature-desc">스마트스토어 API 연동</div>
                     </div>
-                    
-                    <!-- 주요 기능 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">⚡ 주요 기능</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="
-                                background: #fff0f5;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #e91e63;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">🛍️ 네이버 커머스</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">스마트스토어 API 연동</div>
                             </div>
-                            <div style="
-                                background: #f0f8ff;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #2196f3;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">🏢 제휴 업체 관리</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">상품 등록 및 재고 관리</div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">제휴 업체 관리</div>
+                                <div class="feature-desc">상품 등록 및 재고 관리</div>
                             </div>
-                            <div style="
-                                background: #f0fff4;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #4caf50;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">👥 회원 연동</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">교보생명 회원 시스템</div>
                             </div>
-                            <div style="
-                                background: #fff8e1;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #ff9800;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">📊 자사 상품 관리</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">어드민 시스템 개발</div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">회원 연동</div>
+                                <div class="feature-desc">교보생명 회원 시스템</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">자사 상품 관리</div>
+                                <div class="feature-desc">어드민 시스템 개발</div>
+                            </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- 기술 스택 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">🛠️ 개발 기술</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span style="
-                                background: linear-gradient(135deg, #667eea, #764ba2);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Spring Boot</span>
-                            <span style="
-                                background: linear-gradient(135deg, #f093fb, #f5576c);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Node.js</span>
-                            <span style="
-                                background: linear-gradient(135deg, #4facfe, #00f2fe);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Vue.js</span>
-                            <span style="
-                                background: linear-gradient(135deg, #fa709a, #fee140);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Jenkins</span>
-                            <span style="
-                                background: linear-gradient(135deg, #a8edea, #fed6e3);
-                                color: #333;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">MariaDB</span>
-                            <span style="
-                                background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">REST API</span>
-                            <span style="
-                                background: linear-gradient(135deg, #f7b731, #f39c12);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">JavaScript</span>
-                        </div>
+                <div class="demo-section">
+                    <h3>개발 기술</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">MariaDB</span>
+                        <span class="tech-tag">MyBatis</span>
+                        <span class="tech-tag">JPA</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
                     </div>
                     
-                    <!-- 네이버 커머스 연동 예시 -->
-                    <div style="
-                        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-                        padding: 20px;
-                        border-radius: 10px;
-                        color: white;
-                        text-align: center;
-                        margin-bottom: 20px;
-                    ">
-                        <h3 style="margin: 0 0 15px; font-size: 18px;">🔗 네이버 커머스 연동</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-                            <div>
-                                <div style="font-size: 20px; font-weight: bold; color: #ffd700;">API</div>
-                                <div style="font-size: 12px; opacity: 0.9;">스마트스토어 연동</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 20px; font-weight: bold; color: #ffd700;">실시간</div>
-                                <div style="font-size: 12px; opacity: 0.9;">상품 동기화</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 20px; font-weight: bold; color: #ffd700;">통합</div>
-                                <div style="font-size: 12px; opacity: 0.9;">주문 관리</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 하단 정보 -->
-                    <div style="
-                        background: #f8f9fa;
-                        padding: 15px;
-                        border-radius: 8px;
-                        text-align: center;
-                        border: 1px solid #e9ecef;
-                    ">
-                        <div style="color: #666; font-size: 13px;">
-                            🛒 네이버 커머스 연동과 자사 상품 관리 어드민을 통한 통합 전자상거래 플랫폼으로 효율적인 상품 관리와 매출 증대를 실현
-                        </div>
-                    </div>
-                </div>
             </div>
         `;
     } else if (projectId === 'fintech') {
         return `
-            <div style="
-                width: 100%; 
-                height: 500px; 
-                background: #f8f9fa;
-                border-radius: 12px;
-                overflow-y: auto;
-                position: relative;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            ">
-                <!-- 상단 헤더 -->
-                <div style="
-                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-                    padding: 20px;
-                    color: white;
-                    text-align: center;
-                    border-radius: 12px 12px 0 0;
-                ">
-                    <div style="font-size: 24px; font-weight: bold; margin-bottom: 8px;">부동산 PF 및 핀테크 서비스</div>
-                    <div style="font-size: 14px; opacity: 0.9;">투자 회원 관리 및 정산 시스템 개발</div>
+            <div class="project-demo-content">
+                <div class="demo-section">
+                    <h3>서비스 개요</h3>
+                    <p>온투업 및 부동산 PF 서비스를 개발하며, 투자 회원들의 투자 관리부터 매월 정산 처리, 한신정 배치를 통한 연체 관리, CS 문제 해결을 위한 개발 지원까지 전 과정을 담당했습니다.</p>
                 </div>
                 
-                <!-- 메인 컨텐츠 -->
-                <div style="padding: 25px;">
-                    <!-- 서비스 소개 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">💰 서비스 개요</h3>
-                        <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">
-                            온투업 및 부동산 PF 서비스를 개발하며, 투자 회원들의 투자 관리부터 매월 정산 처리, 
-                            한신정 배치를 통한 연체 관리, CS 문제 해결을 위한 개발 지원까지 전 과정을 담당했습니다.
-                        </p>
-                    </div>
-                    
-                    <!-- 주요 기능 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">⚡ 주요 기능</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                            <div style="
-                                background: #f0f8ff;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #2196f3;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">👥 투자 회원 관리</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">회원 정보 및 투자 현황 관리</div>
+                <div class="demo-section">
+                    <h3>주요 기능</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">투자 회원 관리</div>
+                                <div class="feature-desc">회원 정보 및 투자 현황 관리</div>
                             </div>
-                            <div style="
-                                background: #f0fff4;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #4caf50;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">📊 매월 정산 시스템</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">자동화된 정산 처리</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">매월 정산 시스템</div>
+                                <div class="feature-desc">자동화된 정산 처리</div>
                             </div>
-                            <div style="
-                                background: #fff8e1;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #ff9800;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">🔍 한신정 배치</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">연체 및 기한이익상실 관리</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">한신정 배치</div>
+                                <div class="feature-desc">연체 및 기한이익상실 관리</div>
                             </div>
-                            <div style="
-                                background: #fff0f5;
-                                padding: 12px;
-                                border-radius: 8px;
-                                border-left: 4px solid #e91e63;
-                            ">
-                                <div style="font-weight: 600; color: #333; font-size: 13px;">🛠️ CS 지원</div>
-                                <div style="color: #666; font-size: 11px; margin-top: 4px;">문제 해결을 위한 개발 지원</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">금결원 연동</div>
+                                <div class="feature-desc">공시정보 전송</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">Nice 정보 등록</div>
+                                <div class="feature-desc">신용정보 등록 시스템</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-content">
+                                <div class="feature-title">CS 지원</div>
+                                <div class="feature-desc">문제 해결을 위한 개발 지원</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- 기술 스택 -->
-                    <div style="
-                        background: white;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-bottom: 20px;
-                        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                    ">
-                        <h3 style="margin: 0 0 15px; color: #333; font-size: 18px;">🛠️ 개발 기술</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span style="
-                                background: linear-gradient(135deg, #667eea, #764ba2);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Spring Boot</span>
-                            <span style="
-                                background: linear-gradient(135deg, #4facfe, #00f2fe);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Vue.js</span>
-                            <span style="
-                                background: linear-gradient(135deg, #a8edea, #fed6e3);
-                                color: #333;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">PostgreSQL</span>
-                            <span style="
-                                background: linear-gradient(135deg, #fa709a, #fee140);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Jenkins</span>
-                            <span style="
-                                background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">Linux</span>
-                            <span style="
-                                background: linear-gradient(135deg, #f093fb, #f5576c);
-                                color: white;
-                                padding: 6px 12px;
-                                border-radius: 20px;
-                                font-size: 12px;
-                                font-weight: 500;
-                            ">MSSQL</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 핀테크 특화 기능 -->
-                    <div style="
-                        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-                        padding: 20px;
-                        border-radius: 10px;
-                        color: white;
-                        text-align: center;
-                        margin-bottom: 20px;
-                    ">
-                        <h3 style="margin: 0 0 15px; font-size: 18px;">🏦 핀테크 특화 기능</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-                            <div>
-                                <div style="font-size: 20px; font-weight: bold; color: #ffd700;">한신정</div>
-                                <div style="font-size: 12px; opacity: 0.9;">배치 연동</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 20px; font-weight: bold; color: #ffd700;">금결원</div>
-                                <div style="font-size: 12px; opacity: 0.9;">공시정보 전송</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 20px; font-weight: bold; color: #ffd700;">Nice</div>
-                                <div style="font-size: 12px; opacity: 0.9;">정보 등록</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 하단 정보 -->
-                    <div style="
-                        background: #f8f9fa;
-                        padding: 15px;
-                        border-radius: 8px;
-                        text-align: center;
-                        border: 1px solid #e9ecef;
-                    ">
-                        <div style="color: #666; font-size: 13px;">
-                            💰 투자 회원 관리부터 정산, 연체 관리까지 핀테크 서비스의 전 과정을 개발적으로 지원하는 통합 시스템
-                        </div>
+                </div>
+                
+                <div class="demo-section">
+                    <h3>개발 기술</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Elasticsearch</span>
+                        <span class="tech-tag">JPA</span>
                     </div>
                 </div>
             </div>
@@ -940,44 +514,6 @@ function createCustomDemo(projectId) {
     return '<div>데모를 준비 중입니다.</div>';
 }
 
-// 숫자 카운터 애니메이션
-function animateCounter(element, target, duration = 2000, addPlus = false) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    function updateCounter() {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.floor(start) + (addPlus ? '+' : '');
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target + (addPlus ? '+' : '');
-        }
-    }
-    
-    updateCounter();
-}
-
-// 통계 섹션이 보일 때 카운터 애니메이션 시작
-const statsObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll('.stat h4');
-            const targets = [4, 3, 15]; // 4년 경력, 3개 회사, 15+ 프로젝트
-            const addPlus = [false, false, true]; // 프로젝트에만 + 붙이기
-            
-            statNumbers.forEach((stat, index) => {
-                animateCounter(stat, targets[index], 2000, addPlus[index]);
-            });
-            statsObserver.unobserve(entry.target);
-        }
-    });
-});
-
-const aboutStats = document.querySelector('.about-stats');
-if (aboutStats) {
-    statsObserver.observe(aboutStats);
-}
 
 // 프로젝트 모달 기능
 let scrollPosition = 0;
@@ -1005,17 +541,18 @@ function openProjectModal(projectId) {
     const projectData = {
         project1: {
             title: '개인 웹 애플리케이션',
-            description: '개인적으로 개발한 혁신적인 웹 애플리케이션입니다. 사용자 친화적인 인터페이스와 강력한 기능을 제공합니다.',
+            description: '현재 개발 중인 혁신적인 웹 애플리케이션입니다. 곧 공개될 예정이며, 사용자 친화적인 인터페이스와 강력한 기능을 제공할 예정입니다.',
             features: [
-                '반응형 웹 디자인',
-                '실시간 데이터 처리',
-                '사용자 인증 시스템',
-                '모바일 최적화',
-                'API 연동'
+                '준비 중인 반응형 웹 디자인',
+                '개발 예정인 실시간 데이터 처리',
+                '구현 예정인 사용자 인증 시스템',
+                '모바일 최적화 예정',
+                'API 연동 개발 중'
             ],
-            webUrl: '#', // 실제 웹사이트 URL로 교체
-            appUrl: '#', // 앱스토어 URL로 교체
-            demoUrl: '#' // 데모 URL로 교체
+            webUrl: '#', // 준비 중
+            appUrl: '#', // 준비 중
+            demoUrl: '#', // 준비 중
+            customDemo: true // 준비중 데모 표시
         },
         couponpree: {
             title: '모바일 상품권 플랫폼',
@@ -1082,39 +619,51 @@ function openProjectModal(projectId) {
         if (modalWebLink) modalWebLink.href = project.webUrl;
         if (modalAppLink) modalAppLink.href = project.appUrl;
         
-        // 커스텀 데모인 경우 HTML 콘텐츠로 교체
+        // 모달 바디에 프로젝트 내용을 직접 삽입
+        const modalBody = document.getElementById('modalBody');
+        if (modalBody) {
         if (project.customDemo) {
-            const demoContainer = document.querySelector('.project-demo');
-            if (demoContainer) {
-                // 기존 iframe 숨기기
-                const existingIframe = demoContainer.querySelector('iframe');
-                if (existingIframe) {
-                    existingIframe.style.display = 'none';
-                }
-                
-                // 커스텀 데모 내용 추가
-                demoContainer.innerHTML = createCustomDemo(projectId);
-            }
+                // 커스텀 데모 내용을 모달 바디에 직접 삽입
+                modalBody.innerHTML = createCustomDemo(projectId);
         } else {
-            // iframe을 다시 찾아서 설정
-            const currentIframe = document.getElementById('projectIframe');
-            if (currentIframe) {
-                currentIframe.style.display = 'block';
-                currentIframe.src = project.demoUrl;
+                // iframe 사용하는 경우
+                modalBody.innerHTML = `
+                    <div class="project-demo">
+                        <iframe id="projectIframe" src="${project.demoUrl}" frameborder="0"></iframe>
+                    </div>
+                    <div class="project-details">
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-features">
+                            <h4>주요 기능</h4>
+                            <ul id="modalFeatures">
+                                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.webUrl}" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                자세히 보기
+                            </a>
+                            <a href="${project.appUrl}" class="btn btn-secondary" target="_blank">
+                                <i class="fas fa-code"></i>
+                                기술 문서
+                            </a>
+                        </div>
+                    </div>
+                `;
             }
-        }
-        
-        // 기능 목록 업데이트
-        if (modalFeatures) {
-            modalFeatures.innerHTML = '';
-            project.features.forEach(feature => {
-                const li = document.createElement('li');
-                li.textContent = feature;
-                modalFeatures.appendChild(li);
-            });
         }
         
         modal.style.display = 'block';
+        
+        // 모달 내용을 맨 위로 스크롤 (부드럽게)
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
         
         // 스크롤 방지 및 위치 고정
         document.body.style.overflow = 'hidden';
@@ -1137,10 +686,10 @@ function closeProjectModal() {
     
     modal.style.display = 'none';
     
-    // iframe 리소스 해제 (존재하는 경우에만)
-    const modalIframe = document.getElementById('projectIframe');
-    if (modalIframe) {
-        modalIframe.src = '';
+    // 모달 바디 내용 초기화
+    const modalBody = document.getElementById('modalBody');
+    if (modalBody) {
+        modalBody.innerHTML = '';
     }
     
     // 스크롤 복원
@@ -1151,12 +700,6 @@ function closeProjectModal() {
     
     // 저장된 스크롤 위치로 복원
     window.scrollTo(0, scrollPosition);
-    
-    // 커스텀 데모 내용 초기화 - 애니메이션 유지를 위해 iframe으로 복원하지 않음
-    // const demoContainer = document.querySelector('.project-demo');
-    // if (demoContainer) {
-    //     demoContainer.innerHTML = '<iframe id="projectIframe" src="" frameborder="0" style="width: 100%; height: 400px; border: none; border-radius: 8px;"></iframe>';
-    // }
 }
 
 // 모달 외부 클릭 시 닫기
@@ -1167,6 +710,17 @@ window.addEventListener('click', function(event) {
     }
 });
 
+// 섹션 접기/펼치기 기능
+function toggleSection(sectionId) {
+    const sectionTitle = document.querySelector(`#${sectionId} .section-title`);
+    const sectionContent = document.getElementById(`${sectionId}-content`);
+    
+    if (sectionTitle && sectionContent) {
+        sectionTitle.classList.toggle('collapsed');
+        sectionContent.classList.toggle('collapsed');
+    }
+}
+
 // ESC 키로 모달 닫기
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
@@ -1174,13 +728,43 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// 나이 자동 계산 함수
+function calculateAge() {
+    const birthDate = new Date(1996, 11, 8); // 1996년 12월 8일 (월은 0부터 시작)
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
+
+// 페이지 로드 시 항상 상단으로 스크롤
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
 // 페이지 로드 완료 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
+    // 페이지 상단으로 스크롤
+    window.scrollTo(0, 0);
+    
+    // 나이 업데이트
+    const ageElement = document.getElementById('age');
+    if (ageElement) {
+        ageElement.textContent = calculateAge() + '세';
+    }
+    
     // 로딩 애니메이션 추가
     document.body.style.opacity = '0';
     
     window.addEventListener('load', function() {
         document.body.style.transition = 'opacity 0.5s ease';
         document.body.style.opacity = '1';
+        // 로드 완료 후에도 상단으로 스크롤
+        window.scrollTo(0, 0);
     });
 });

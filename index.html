@@ -6,9 +6,12 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>나의 포트폴리오</title>
+    <title>DevProfile</title>
+    <link rel="icon" type="image/png" href="images/dolphin.png">
+    <link rel="apple-touch-icon" href="images/dolphin.png">
+    <link rel="shortcut icon" href="images/dolphin.png">
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -16,7 +19,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>DevProfile</h2>
+                <a href="#home" style="text-decoration: none;">
+                    <h2>DevProfile</h2>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -118,7 +123,12 @@
     <!-- 소개 섹션 -->
     <section id="about" class="about">
         <div class="container">
-            <div class="about-content">
+            <h2 class="section-title" onclick="toggleSection('about')">
+                About Me
+            </h2>
+            <p class="section-subtitle">개발자로서의 여정과 경험을 소개합니다</p>
+            <div class="section-content" id="about-content">
+                <div class="about-content">
                 <div class="about-visual">
                     <div class="profile-card">
                         <div class="profile-image">
@@ -132,13 +142,27 @@
                         <div class="profile-info">
                             <h4>윤예빈</h4>
                             <p>백엔드 웹 개발자</p>
-                            <div class="profile-tags">
-                                <span class="tag">Spring Boot</span>
-                                <span class="tag">Java</span>
-                                <span class="tag">MySQL</span>
-                                <span class="tag">PostgreSQL</span>
-                                <span class="tag">Linux</span>
-                                <span class="tag">Jenkins</span>
+                            <div class="profile-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <span class="detail-label">나이:</span>
+                                    <span class="detail-value">1996년생 (<span id="age">28세</span>)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span class="detail-label">학력:</span>
+                                    <span class="detail-value">학사학위 취득</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span class="detail-label">거주지:</span>
+                                    <span class="detail-value">경기도 고양시</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-briefcase"></i>
+                                    <span class="detail-label">경력:</span>
+                                    <span class="detail-value">4년</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +192,7 @@
                     </div>
                     
                     <div class="about-text">
-                        <h3>About Me</h3>
+                        <h3>Introduction</h3>
                         <p class="intro-text">
                             안녕하세요, 개발자 윤예빈입니다. 저는 2021년부터 현재까지 약 4년간의 실무 경험을 통해 
                             모바일 상품권 플랫폼, 전자상거래 시스템, 핀테크 서비스 등 다양한 도메인에서 백엔드 개발을 담당해왔습니다.<br><br>
@@ -182,14 +206,19 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <!-- 기술 섹션 -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
+            <h2 class="section-title" onclick="toggleSection('skills')">
+                Skills
+            </h2>
+            <p class="section-subtitle">실무에서 사용해본 기술들</p>
+            <div class="section-content" id="skills-content">
+                <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Frontend</h3>
                     <div class="skill-items">
@@ -227,13 +256,17 @@
                             <span>Java</span>
                         </div>
                         <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>REST API</span>
+                            <i class="fas fa-database"></i>
+                            <span>JPA</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>MyBatis</span>
                         </div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Database & CI/CD</h3>
+                    <h3>Infrastructure & DevOps</h3>
                     <div class="skill-items">
                         <div class="skill-item">
                             <i class="fas fa-database"></i>
@@ -242,6 +275,18 @@
                         <div class="skill-item">
                             <i class="fas fa-database"></i>
                             <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cube"></i>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-search"></i>
+                            <span>Elasticsearch</span>
                         </div>
                         <div class="skill-item">
                             <i class="fab fa-linux"></i>
@@ -279,29 +324,29 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <!-- 프로젝트 섹션 -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title" onclick="toggleSection('projects')">
+                Company Projects
+            </h2>
             <p class="section-subtitle">회사에서의 프로젝트 경험</p>
-            <div class="projects-grid">
+            <div class="section-content" id="projects-content">
+                <div class="projects-grid">
                 <div class="project-card" onclick="openProjectModal('couponpree')" style="cursor: pointer;">
-                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="project-image" style="background: linear-gradient(135deg, #2c2c2c 0%, #404040 100%);">
                         <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>상세보기</span>
                     </div>
                     <div class="project-content">
                         <h3>모바일 상품권 플랫폼 개발</h3>
-                        <p>Spring Boot와 Java를 활용하여 모바일 상품권 플랫폼을 개발하였습니다. 상품권 구매/발송, 결제 시스템 연동, Firebase 푸시 알림, 어드민 페이지 및 이체 서비스 구현 등을 담당했습니다.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">MSSQL</span>
-                            <span class="tech-tag">iOS</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-calendar-alt"></i>
@@ -312,19 +357,15 @@
                 </div>
 
                 <div class="project-card" onclick="openProjectModal('ecommerce')" style="cursor: pointer;">
-                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="project-image" style="background: linear-gradient(135deg, #2c2c2c 0%, #404040 100%);">
                         <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>상세보기</span>
                     </div>
                     <div class="project-content">
                         <h3>전자상거래 플랫폼 개발</h3>
-                        <p>Spring Boot를 활용하여 제휴 업체 상품 판매 사이트를 개발하고, 네이버 스마트스토어 API 마이그레이션, 교보생명 회원 연동, 어드민 사이트 개선 등의 업무를 수행했습니다.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MariaDB</span>
-                            <span class="tech-tag">MyBatis</span>
-                            <span class="tech-tag">Jenkins</span>
-                        </div>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-calendar-alt"></i>
@@ -335,19 +376,15 @@
                 </div>
 
                 <div class="project-card" onclick="openProjectModal('fintech')" style="cursor: pointer;">
-                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="project-image" style="background: linear-gradient(135deg, #2c2c2c 0%, #404040 100%);">
                         <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>상세보기</span>
                     </div>
                     <div class="project-content">
                         <h3>부동산 PF 및 핀테크 서비스</h3>
-                        <p>온투업 및 부동산 PF 서비스를 개발하며, 한국신용정보원 채권자 변동 정보 전송, 금결원 공시정보 전송 배치, Nice 정보 등록 개발 등을 담당했습니다.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Jenkins</span>
-                            <span class="tech-tag">Linux</span>
-                        </div>
                         <div class="project-links">
                             <a href="#" class="project-link">
                                 <i class="fas fa-calendar-alt"></i>
@@ -357,28 +394,30 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <!-- 개인 프로젝트 섹션 -->
     <section id="personal-projects" class="personal-projects">
         <div class="container">
-            <h2 class="section-title">Personal Projects</h2>
+            <h2 class="section-title" onclick="toggleSection('personal-projects')">
+                Personal Projects
+            </h2>
             <p class="section-subtitle">개인 웹앱 프로젝트</p>
-            <div class="personal-projects-grid">
+            <div class="section-content" id="personal-projects-content">
+                <div class="personal-projects-grid">
                 <div class="personal-project-card" onclick="openProjectModal('project1')">
-                    <div class="project-preview">
-                        <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <i class="fas fa-eye"></i>
-                            <span>미리보기</span>
-                        </div>
+                    <div class="project-image" style="background: linear-gradient(135deg, #2c2c2c 0%, #404040 100%);">
+                        <i class="fas fa-tools" style="opacity: 0.6;"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <i class="fas fa-eye"></i>
+                        <span>상세보기</span>
                     </div>
                     <div class="project-info">
                         <h3>웹 애플리케이션</h3>
-                        <p>개인 프로젝트로 개발한 웹앱</p>
+                        <p>준비 중인 개인 프로젝트 웹앱</p>
                         <div class="project-status">
                             <span class="status-badge coming-soon">Coming Soon</span>
                         </div>
@@ -391,36 +430,12 @@
     <!-- 프로젝트 모달 -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeProjectModal()">&times;</span>
             <div class="modal-header">
                 <h2 id="modalTitle">프로젝트 상세</h2>
+                <span class="close" onclick="closeProjectModal()">&times;</span>
             </div>
-            <div class="modal-body">
-                <div class="project-demo">
-                    <iframe id="projectIframe" src="" frameborder="0"></iframe>
-                </div>
-                <div class="project-details">
-                    <h3>프로젝트 소개</h3>
-                    <p id="modalDescription">프로젝트 설명이 여기에 표시됩니다.</p>
-                    <div class="project-features">
-                        <h4>주요 기능</h4>
-                        <ul id="modalFeatures">
-                            <li>기능 1</li>
-                            <li>기능 2</li>
-                            <li>기능 3</li>
-                        </ul>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn btn-primary" id="modalWebLink" target="_blank" style="display: none;">
-                            <i class="fas fa-external-link-alt"></i>
-                            자세히 보기
-                        </a>
-                        <a href="#" class="btn btn-secondary" id="modalAppLink" target="_blank" style="display: none;">
-                            <i class="fas fa-code"></i>
-                            기술 문서
-                        </a>
-                    </div>
-                </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 프로젝트 내용이 여기에 동적으로 삽입됩니다 -->
             </div>
         </div>
     </div>
@@ -428,8 +443,12 @@
     <!-- 연락처 섹션 -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-content">
+            <h2 class="section-title" onclick="toggleSection('contact')">
+                Contact Me
+            </h2>
+            <p class="section-subtitle">연락처 및 상세 정보</p>
+            <div class="section-content" id="contact-content">
+                <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -470,13 +489,14 @@
                     </form>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <!-- 푸터 -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Yun Yebin Portfolio</p>
+            <p>&copy; 2025 Yebin DevProfile</p>
         </div>
     </footer>
 

@@ -1,3 +1,14 @@
+// 기본 보안 설정
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
 // 네비게이션 스크롤 효과
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
@@ -100,12 +111,12 @@ function typeWriter(element, text, speed = 100) {
 }
 
 
-// 페이지 로드 시 타이핑 효과 적용
+// 페이지 로드 시 제목 설정
 window.addEventListener('load', function() {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
-        // 모든 디바이스에서 타이핑 애니메이션 (두 줄로 나누어서)
-        typeWriter(heroTitle, 'Backend<br>Developer', 100);
+        // 이름과 같은 fadeInUp 애니메이션 효과로 표시
+        heroTitle.innerHTML = 'Backend<br>Developer';
     }
 });
 
@@ -343,7 +354,7 @@ function createCustomDemo(projectId) {
             <div class="project-demo-content">
                 <div class="demo-section">
                     <h3>서비스 개요</h3>
-                    <p>모바일 상품권 구매부터 사용까지 전 과정을 디지털화하여 편의성을 높이고, 가맹점에게는 안정적인 매출 확보와 마케팅 도구를 제공하는 플랫폼입니다.</p>
+                    <p>상품권 디자인 관리 및 생성 기능을 포함한 자사 어드민 관리 시스템입니다. 상품권의 디자인을 관리하고, 새로운 상품권을 생성하는 기능을 제공하여 비즈니스 운영을 효율화합니다.</p>
                 </div>
                 
                 <div class="demo-section">
@@ -351,26 +362,26 @@ function createCustomDemo(projectId) {
                     <div class="features-grid">
                         <div class="feature-item">
                             <div class="feature-content">
-                                <div class="feature-title">모바일 상품권</div>
-                                <div class="feature-desc">할인 구매 및 발송</div>
+                                <div class="feature-title">디자인 관리</div>
+                                <div class="feature-desc">상품권 디자인 관리</div>
                     </div>
                             </div>
                         <div class="feature-item">
                             <div class="feature-content">
-                                <div class="feature-title">리워드 시스템</div>
-                                <div class="feature-desc">추가 적립 혜택</div>
+                                <div class="feature-title">상품권 생성</div>
+                                <div class="feature-desc">새로운 상품권 생성</div>
                             </div>
                             </div>
                         <div class="feature-item">
                             <div class="feature-content">
-                                <div class="feature-title">가맹점 관리</div>
-                                <div class="feature-desc">매출 확보 도구</div>
+                                <div class="feature-title">템플릿 관리</div>
+                                <div class="feature-desc">디자인 템플릿 관리</div>
                             </div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-content">
-                                <div class="feature-title">마케팅 분석</div>
-                                <div class="feature-desc">통계 및 분석</div>
+                                <div class="feature-title">카테고리 분류</div>
+                                <div class="feature-desc">상품권 카테고리 관리</div>
                     </div>
                         </div>
                     </div>
@@ -396,7 +407,7 @@ function createCustomDemo(projectId) {
             <div class="project-demo-content">
                 <div class="demo-section">
                     <h3>서비스 개요</h3>
-                    <p>네이버 스마트스토어 API를 활용한 전자상거래 플랫폼으로, 제휴 업체의 상품을 효율적으로 관리하고 자사 상품 관리 어드민 시스템을 개발하여 교보생명 회원과 연동된 통합적인 쇼핑 경험을 제공합니다.</p>
+                    <p>기존 SOAP 기반 스마트스토어 API를 REST API 기반 네이버커머스 API로 마이그레이션하여 구축한 전자상거래 플랫폼으로, 제휴 업체의 상품을 효율적으로 관리하고 자사 상품 관리 어드민 시스템을 개발하여 교보생명 회원 SSO 연동을 통한 통합적인 쇼핑 경험을 제공합니다.</p>
                 </div>
                 
                 <div class="demo-section">
@@ -404,8 +415,8 @@ function createCustomDemo(projectId) {
                     <div class="features-grid">
                         <div class="feature-item">
                             <div class="feature-content">
-                                <div class="feature-title">네이버 커머스</div>
-                                <div class="feature-desc">스마트스토어 API 연동</div>
+                                <div class="feature-title">API 마이그레이션</div>
+                                <div class="feature-desc">SOAP → REST API</div>
                     </div>
                             </div>
                         <div class="feature-item">
@@ -416,8 +427,8 @@ function createCustomDemo(projectId) {
                             </div>
                         <div class="feature-item">
                             <div class="feature-content">
-                                <div class="feature-title">회원 연동</div>
-                                <div class="feature-desc">교보생명 회원 시스템</div>
+                                <div class="feature-title">SSO 연동</div>
+                                <div class="feature-desc">교보생명 회원 SSO</div>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -501,7 +512,10 @@ function createCustomDemo(projectId) {
                         <span class="tech-tag">Spring Boot</span>
                         <span class="tech-tag">Vue.js</span>
                         <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MySQL</span>
                         <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">SVN</span>
                         <span class="tech-tag">Linux</span>
                         <span class="tech-tag">Kubernetes</span>
                         <span class="tech-tag">Elasticsearch</span>
@@ -555,17 +569,17 @@ function openProjectModal(projectId) {
             customDemo: true // 준비중 데모 표시
         },
         couponpree: {
-            title: '모바일 상품권 플랫폼',
-            description: '소상공인과 소비자를 연결하는 모바일 상품권 서비스입니다. 상품권 구매부터 사용까지 전 과정을 디지털화하여 편의성을 높이고, 가맹점에게는 안정적인 매출 확보와 마케팅 도구를 제공합니다.',
+            title: '자사 어드민 관리 시스템',
+            description: '상품권 디자인 관리 및 생성 기능을 포함한 자사 어드민 관리 시스템입니다. 상품권의 디자인을 관리하고, 새로운 상품권을 생성하는 기능을 제공하여 비즈니스 운영을 효율화합니다.',
             features: [
-                '모바일 상품권 구매 및 발송',
-                '가맹점 입점 및 관리 시스템',
-                '소비자 리워드 적립 서비스',
-                '실시간 알림 및 푸시 서비스',
-                '통합 결제 시스템',
-                '가맹점용 전용 앱 제공',
-                '상품권 조회 및 관리',
-                '소상공인 마케팅 플랫폼'
+                '상품권 디자인 관리 시스템',
+                '상품권 생성 및 발행 기능',
+                '디자인 템플릿 관리',
+                '상품권 카테고리 분류',
+                '디자인 미리보기 기능',
+                '상품권 상태 관리',
+                '사용자 권한 관리',
+                '시스템 로그 및 모니터링'
             ],
             webUrl: '#',
             appUrl: '#',
@@ -574,11 +588,11 @@ function openProjectModal(projectId) {
         },
         ecommerce: {
             title: '전자상거래 플랫폼',
-            description: 'Spring Boot를 활용하여 제휴 업체 상품 판매 사이트를 개발하고, 네이버 스마트스토어 API 마이그레이션, 교보생명 회원 연동, 어드민 사이트 개선 등의 업무를 수행했습니다.',
+            description: 'Spring Boot를 활용하여 제휴 업체 상품 판매 사이트를 개발하고, 기존 SOAP 기반 스마트스토어 API를 REST API 기반 네이버커머스 API로의 마이그레이션 작업, 교보생명 회원 SSO 연동, 어드민 사이트 개선 등의 업무를 수행했습니다.',
             features: [
-                '네이버 스마트스토어 API 연동',
+                'SOAP → REST API 마이그레이션',
                 '제휴 업체 상품 관리 시스템',
-                '교보생명 회원 연동 서비스',
+                '교보생명 회원 SSO 연동 서비스',
                 '자사 상품 관리 어드민 개발',
                 '상품 등록 및 재고 관리',
                 '주문 처리 및 배송 관리',

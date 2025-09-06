@@ -1,3 +1,31 @@
+/* 보안 강화 스타일 */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 텍스트 선택 방지 */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* 드래그 방지 */
+img, a, button {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
 /* 기본 스타일 */
 * {
     margin: 0;
@@ -306,13 +334,14 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: fadeInUp 1s ease 0.5s both;
 }
 
 .hero-stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    max-width: 400px;
+    max-width: 480px;
 }
 
 .stat-card {
@@ -324,9 +353,10 @@ body::before {
     padding: 1.2rem;
     text-align: center;
     transition: all 0.3s ease;
-    animation: fadeInUp 1s ease 1s both;
+    animation: fadeInUp 1s ease 0.5s both;
     z-index: 1;
-    height: 130px;
+    height: 150px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -363,7 +393,7 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeInUp 1s ease;
+    animation: fadeInUp 1s ease 1.2s both;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
     line-height: 1.1;
 }
@@ -375,7 +405,7 @@ body::before {
     font-weight: 600;
     margin-bottom: 1.5rem;
     color: #d4af37;
-    animation: fadeInUp 1s ease 0.6s both;
+    animation: fadeInUp 1s ease 0.5s both;
     text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     display: flex;
     align-items: center;
@@ -413,7 +443,7 @@ body::before {
     margin-bottom: 2rem;
     opacity: 0.95;
     color: #e2e8f0;
-    animation: fadeInUp 1s ease 0.8s both;
+    animation: fadeInUp 1s ease 0.5s both;
     max-width: 600px;
     text-align: left;
     min-height: 3.6em; /* 최소 2줄 높이 */
@@ -432,7 +462,7 @@ body::before {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    animation: fadeInUp 1s ease 0.6s both;
+    animation: fadeInUp 1s ease 0.5s both;
     margin-top: 1rem;
 }
 
@@ -1039,10 +1069,11 @@ section {
     box-shadow: var(--shadow);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    min-height: fit-content;
 }
 
 .skill-category::before {
@@ -1071,6 +1102,7 @@ section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    min-height: auto;
 }
 
 .skill-item {
@@ -1081,6 +1113,8 @@ section {
     background: var(--secondary-color);
     border-radius: 10px;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    min-height: 2.5rem;
 }
 
 .skill-item:hover {
@@ -1215,7 +1249,27 @@ section {
 /* 연락처 섹션 */
 .contact {
     padding: 2rem 0 4rem 0;
-    background: var(--background-color);
+    background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 50%, #d0d0d0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(44, 44, 44, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.contact:hover::before {
+    opacity: 1;
+    transform: scale(1.02);
 }
 
 .contact-content {
@@ -1410,6 +1464,11 @@ section {
         overflow: hidden;
         word-wrap: break-word;
         word-break: keep-all;
+        animation: fadeInUp 1s ease 0.5s both;
+    }
+    
+    .hero-visual {
+        animation: fadeInUp 1s ease 0.5s both;
     }
     
     .hero-stats-grid {
@@ -1419,10 +1478,37 @@ section {
         margin: 0 auto;
     }
     
+    .hero-stats-grid {
+        display: none;
+    }
+    
     .stat-card {
         padding: 1rem;
         animation: none !important;
         opacity: 1 !important;
+    }
+    
+    /* 모바일에서 프로젝트 카드 크기 줄이기 */
+    .project-card {
+        margin-bottom: 1rem;
+    }
+    
+    .project-image {
+        height: 150px;
+    }
+    
+    .project-info {
+        padding: 1rem;
+    }
+    
+    .project-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .project-info p {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
     
     .about-content {
@@ -1486,10 +1572,12 @@ section {
     
     .hero-title {
         font-size: 3.5rem;
+        animation: fadeInUp 1s ease 1.2s both;
     }
     
     .hero-subtitle {
         font-size: 1.8rem;
+        animation: fadeInUp 1s ease 0.5s both;
     }
     
     .hero-buttons {
@@ -1497,6 +1585,7 @@ section {
         align-items: flex-start;
         justify-content: flex-start;
         margin-top: 0.5rem;
+        animation: fadeInUp 1s ease 0.5s both;
     }
     
     .btn {
@@ -1601,7 +1690,7 @@ section {
 /* 개인 프로젝트 섹션 */
 .personal-projects {
     padding: 5rem 0;
-    background: var(--background-secondary);
+    background: var(--background-color);
 }
 
 .section-subtitle {

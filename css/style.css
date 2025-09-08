@@ -33,6 +33,14 @@ img, a, button {
     box-sizing: border-box;
 }
 
+html {
+    background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
 :root {
     /* 모던 인더스트리얼 색상 팔레트 (이미지 기반) */
     --primary-color: #2c2c2c;
@@ -75,8 +83,11 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
-    min-height: 100vh;
+    min-height: 100%;
     position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body::before {
